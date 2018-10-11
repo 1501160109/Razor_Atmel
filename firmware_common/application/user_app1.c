@@ -60,6 +60,7 @@ Variable names shall start with "UserApp1_" and be declared as static.
 static fnCode_type UserApp1_StateMachine;            /* The state machine function pointer */
 //static u32 UserApp1_u32Timeout;                      /* Timeout counter used across states */
 
+static u16 u16BlinkCount = 0;
 
 /**********************************************************************************************************************
 Function Definitions
@@ -87,6 +88,9 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
+   /* Initialize all unused LEDs to off */
+
+
  
   /* If good initialization, set state to Idle */
   if( 1 )
@@ -118,6 +122,53 @@ Promises:
 */
 void UserApp1RunActiveState(void)
 {
+  /* All discrete LEDs to off */
+ LedOff(WHITE);
+ LedOff(PURPLE);
+ LedOff(BLUE);
+ LedOff(CYAN);
+ LedOff(GREEN);
+ LedOff(YELLOW);
+ LedOff(ORANGE);
+ LedOff(RED);
+
+  u16BlinkCount++;
+  
+  if(u16BlinkCount >= 500 && u16BlinkCount < 2500 )
+{
+ LedOff(GREEN); 
+ LedOn(WHITE);
+ LedPWM(WHITE, LED_PWM_100);
+}
+
+ if(u16BlinkCount >= 2500 && u16BlinkCount < 4200  )
+{
+ LedOff(WHITE);
+ LedOn(PURPLE);
+ LedPWM(PURPLE, LED_PWM_70);
+}
+
+ if(u16BlinkCount >= 4200 && u16BlinkCount < 5600  )
+{
+ LedOff(PURPLE);
+ LedOn(BLUE);
+ LedPWM(BLUE, LED_PWM_50);
+}
+
+ if(u16BlinkCount >= 5600 && u16BlinkCount < 6700  )
+{
+ LedOff(BLUE); 
+ LedOn(CYAN);
+ LedPWM(CYAN, LED_PWM_30);
+}
+
+ if(u16BlinkCount >= 6700 && u16BlinkCount < 7500  )
+{
+ LedOff(CYAN);
+ LedOn(GREEN);
+ LedPWM(GREEN, LED_PWM_10);
+ u16BlinkCount = 0;
+}
   UserApp1_StateMachine();
 
 } /* end UserApp1RunActiveState */
