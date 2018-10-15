@@ -88,9 +88,28 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
-   /* Initialize all unused LEDs to off */
+   UserApp1_sChannelInfo.AntChannel=ANT
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   UserApp1_sChannelInfo.
+   for(u8 i=0;i<8;i++){
+    UserApp1_sChannelInfo.AntNetworkKey[i] 
+     }
+  /* Initialize all unused LEDs to off */
 
-
+   LedOff(WHITE);
+   LedOff(PURPLE);
+   LedOff(BLUE);
+   LedOff(CYAN);
+   LedOff(GREEN);
+   LedOff(YELLOW);
+   LedOff(ORANGE);
+   LedOff(RED);
  
   /* If good initialization, set state to Idle */
   if( 1 )
@@ -123,14 +142,7 @@ Promises:
 void UserApp1RunActiveState(void)
 {
   /* All discrete LEDs to off */
- LedOff(WHITE);
- LedOff(PURPLE);
- LedOff(BLUE);
- LedOff(CYAN);
- LedOff(GREEN);
- LedOff(YELLOW);
- LedOff(ORANGE);
- LedOff(RED);
+
 
   u16BlinkCount++;
   
